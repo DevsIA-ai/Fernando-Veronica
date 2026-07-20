@@ -458,12 +458,12 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
   height:120px; width:auto; max-width:100%;
   border-radius:6px; border:1px solid var(--gold-light);
   box-shadow:0 4px 16px rgba(0,0,0,.1);
-  display:block; margin-bottom:.3rem;
+  display:block;
 }
 .paleta-caption {
-  font-family:var(--serif); font-size:1.45rem; font-style:italic;
+  font-family:var(--serif); font-size:1.45rem; font-weight:700;
   color:#c4827f; text-align:center; line-height:1.3;
-  white-space:nowrap;
+  white-space:nowrap; margin-bottom:.75rem;
 }
 @media(max-width:600px){
   .paletas-wrap { flex-direction:column; align-items:center; }
@@ -584,10 +584,20 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
   background:var(--white);
   border:1px solid var(--gold-light); border-radius:5px;
   cursor:pointer; font-size:.8rem; color:var(--text-muted);
-  transition:all .3s; user-select:none;
+  transition:all .25s ease; user-select:none;
 }
-.attend-opt:hover { border-color:var(--gold); color:var(--gold-dark); }
+.attend-opt:hover {
+  border-color:var(--gold); color:#fff;
+  background:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 8px 18px rgba(201,169,110,.4);
+}
 .attend-opt.sel { border-color:var(--gold); color:var(--gold-dark); background:rgba(201,169,110,.12); }
+.attend-opt.sel:hover { color:#fff; }
+.rsvp-recap {
+  font-family:var(--serif); font-style:italic; font-size:.9rem;
+  color:var(--gold-dark); text-align:center; margin-top:-.4rem;
+}
 .btn-submit {
   margin-top:.4rem; padding:1.05rem 2rem;
   background:var(--gold); border:none; border-radius:50px;
@@ -1117,12 +1127,12 @@ body.env-open { overflow:hidden; }
       <div class="detail-card reveal d1">
         <div class="detail-card-icon">⛪</div>
         <p class="detail-card-lbl">Ceremonia Religiosa</p>
-        <p class="detail-card-val">Hora por confirmar<br><span style="font-size:.85rem">Parroquia Tránsito de San José<br>Guadalajara, Jal.</span></p>
+        <p class="detail-card-val">5:00 PM<br><span style="font-size:.85rem">Parroquia Tránsito de San José<br>Guadalajara, Jal.</span></p>
       </div>
       <div class="detail-card reveal d2">
         <div class="detail-card-icon">◈</div>
         <p class="detail-card-lbl">Recepción</p>
-        <p class="detail-card-val">Hora por confirmar<br><span style="font-size:.85rem">Jardín Real Bambú<br>San Pedro Tlaquepaque, Jal.</span></p>
+        <p class="detail-card-val">7:00 PM<br><span style="font-size:.85rem">Jardín Real Bambú<br>San Pedro Tlaquepaque, Jal.</span></p>
       </div>
     </div>
 
@@ -1131,7 +1141,7 @@ body.env-open { overflow:hidden; }
       <em>Parroquia Tránsito de San José</em>
     </p>
     <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:.75rem;text-align:center">
-      C. Pedro García Conde 1040, Zona Industrial Sur, 44970 Guadalajara, Jal. · Hora por confirmar
+      C. Pedro García Conde 1040, Zona Industrial Sur, 44970 Guadalajara, Jal. · 5:00 PM
     </p>
     <div class="map-box reveal">
       <div class="map-grid-lines"></div>
@@ -1159,7 +1169,7 @@ body.env-open { overflow:hidden; }
       <em>Jardín Real Bambú</em>
     </p>
     <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:.75rem;text-align:center">
-      C. Guanábana 4096, Las Huertas, 45589 San Pedro Tlaquepaque, Jal. · Hora por confirmar
+      C. Guanábana 4096, Las Huertas, 45589 San Pedro Tlaquepaque, Jal. · 7:00 PM
     </p>
     <div class="map-box reveal">
       <div class="map-grid-lines"></div>
@@ -1229,25 +1239,19 @@ body.env-open { overflow:hidden; }
     <div class="timeline">
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
-        <span class="tl-time">Hora por confirmar</span>
+        <span class="tl-time">5:00 PM</span>
         <h3 class="tl-title">Ceremonia Religiosa</h3>
         <p class="tl-desc">Parroquia Tránsito de San José, Guadalajara, Jal.</p>
       </div>
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
-        <span class="tl-time">Hora por confirmar</span>
+        <span class="tl-time">7:00 PM</span>
         <h3 class="tl-title">Recepción</h3>
         <p class="tl-desc">Jardín Real Bambú, San Pedro Tlaquepaque, Jal.</p>
       </div>
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
-        <span class="tl-time">Hora por confirmar</span>
-        <h3 class="tl-title">Cóctel de Bienvenida</h3>
-        <p class="tl-desc">Un brindis para comenzar la celebración</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <span class="tl-time">Hora por confirmar</span>
+        <span class="tl-time">8:00 PM</span>
         <h3 class="tl-title">Cena y Baile</h3>
         <p class="tl-desc">La fiesta continúa hasta el amanecer</p>
       </div>
@@ -1285,13 +1289,13 @@ body.env-open { overflow:hidden; }
     <div class="paletas-wrap reveal">
       <div class="paleta-item">
         <p class="paleta-label">Mujeres</p>
-        <img src="Paleta de color 1.jfif" alt="Paleta de color 1">
         <p class="paleta-caption">Evitar estos colores y escotes pronunciados</p>
+        <img src="Paleta de color 1.jfif" alt="Paleta de color 1">
       </div>
       <div class="paleta-item">
         <p class="paleta-label">Hombres</p>
-        <img src="Paleta de color 2.jpg" alt="Paleta de color 2">
         <p class="paleta-caption">Prendas a evitar</p>
+        <img src="Paleta de color 2.jpg" alt="Paleta de color 2">
       </div>
     </div>
 
@@ -1315,12 +1319,13 @@ body.env-open { overflow:hidden; }
     <div class="rsvp-form reveal" style="position:relative;z-index:1">
 
       <div class="f-field">
-        <label class="f-label">¿Asistirás?</label>
+        <label class="f-label">Confirmo mi asistencia</label>
         <div class="attend-row">
-          <div class="attend-opt" onclick="selectAttend(this,'yes')">✓ Sí, ahí estaré</div>
-          <div class="attend-opt" onclick="selectAttend(this,'no')">✗ Lo siento, no podré</div>
+          <div class="attend-opt sel" id="attendYesOpt" onclick="selectAttend(this,'yes'); sendWhatsApp();">✓ Sí, ahí estaré</div>
         </div>
       </div>
+
+      <p class="rsvp-recap" id="rsvpRecap" style="display:none"></p>
 
       <div class="f-field">
         <label class="f-label">Mensaje para los novios</label>
@@ -1434,7 +1439,7 @@ function cerrarSobre(){
 
 /* ---- COUNTDOWN ---- */
 const CIRC = 276.46; // 2π × 44
-const WEDDING = new Date('2026-11-22T00:00:00');
+const WEDDING = new Date('2026-11-22T17:00:00');
 
 function pad(n){ return String(Math.floor(n)).padStart(2,'0'); }
 
@@ -1508,16 +1513,32 @@ function toggleMusic(){
 }
 
 /* ---- RSVP ---- */
-let attendVal = '';
+let attendVal = 'yes';
 function selectAttend(el, val){
   document.querySelectorAll('.attend-opt').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
   attendVal = val;
 }
+
+const rsvpParams = new URLSearchParams(window.location.search);
+const guestFamily = rsvpParams.get('f') || rsvpParams.get('familia') || '';
+const guestBoletos = parseInt(rsvpParams.get('b') || rsvpParams.get('boletos') || '1', 10);
+const guestMesa = rsvpParams.get('m') || rsvpParams.get('mesa') || '';
+
+(function(){
+  if(!guestFamily) return;
+  let recap = `Confirmando para: Familia ${guestFamily} · ${guestBoletos} ${guestBoletos === 1 ? 'boleto' : 'boletos'}`;
+  if(guestMesa) recap += ` · Mesa ${guestMesa}`;
+  const el = document.getElementById('rsvpRecap');
+  el.textContent = recap;
+  el.style.display = 'block';
+})();
+
 function sendWhatsApp(){
-  const asistencia = attendVal === 'yes' ? 'Sí asistiré' : attendVal === 'no' ? 'Lo siento, No podré asistir' : '(sin seleccionar)';
   const msg = document.getElementById('rsvpMsg').value.trim();
-  let texto = `Hola, soy invitado de la boda de Fernando y Verónica \n\n¿Asistiré el 22 de Noviembre de 2026?\n${asistencia}`;
+  let texto = `Hola, soy invitado de la boda de Fernando y Verónica \n\n¿Asistiré el 22 de Noviembre de 2026?\nSí asistiré`;
+  if(guestFamily) texto += `\n\nFamilia: ${guestFamily}\nBoletos asignados: ${guestBoletos}`;
+  if(guestMesa) texto += `\nMesa: ${guestMesa}`;
   if(msg) texto += `\n\nMensaje: ${msg}`;
   window.open('https://wa.me/5213351297306?text=' + encodeURIComponent(texto), '_blank');
 }
