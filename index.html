@@ -34,7 +34,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 .eyebrow {
   font-family: var(--sans);
   font-size: 0.6rem; letter-spacing: 0.5em;
-  text-transform: uppercase; color: var(--gold);
+  text-transform: uppercase; color: var(--text-muted);
   display: block; margin-bottom: 0.75rem;
 }
 .section-title {
@@ -240,7 +240,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 }
 .cd-label {
   font-size:.58rem; letter-spacing:.5em; text-transform:uppercase;
-  color:var(--gold-dark); margin-bottom:3rem; display:block;
+  color:var(--text-muted); margin-bottom:3rem; display:block;
 }
 .clock-rings {
   display:flex; align-items:center; justify-content:center;
@@ -275,7 +275,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 }
 .ring-unit {
   font-size:.52rem; letter-spacing:.3em; text-transform:uppercase;
-  color:var(--gold-dark);
+  color:var(--text-muted);
 }
 .cd-sep {
   font-family:var(--serif);
@@ -288,16 +288,28 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
    STORY
    ============================== */
 #story { background:var(--white); }
-.story-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:3.5rem; align-items:center; margin-top:3rem;
+.story-stack {
+  display:flex; flex-direction:column; align-items:center;
+  gap:2.25rem; margin-top:3rem; text-align:center;
 }
-@media(max-width:600px){ .story-grid{grid-template-columns:1fr;gap:2rem} }
-.story-monogram-img {
-  display:block; width:100%; height:auto;
-  border-radius:6px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
+.story-names-card {
+  width:100%;
+  display:flex; flex-direction:column; align-items:center;
 }
+.story-names-row {
+  display:flex; align-items:center; justify-content:center;
+  gap:clamp(.6rem,4vw,2.25rem); flex-wrap:nowrap;
+}
+.story-name-col { display:flex; flex-direction:column; align-items:center; gap:.5rem; min-width:0; }
+.story-first-script {
+  font-family:var(--script); font-size:clamp(1.5rem,7vw,2.9rem);
+  color:var(--gold-dark); line-height:1; white-space:nowrap;
+}
+.story-last-name {
+  font-size:clamp(.48rem,1.8vw,.62rem); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--text-muted); white-space:nowrap;
+}
+.story-heart { color:var(--gold); font-size:1.1rem; flex-shrink:0; }
 .story-sub { font-family:var(--serif); font-size:clamp(1.4rem,3vw,2rem); font-weight:300; color:var(--text); margin-bottom:1.25rem; }
 .story-body { font-family:var(--serif); font-size:1.1rem; color:var(--text-muted); line-height:1.9; }
 
@@ -321,7 +333,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
   display:flex; align-items:center; justify-content:center;
   color:var(--gold); font-size:1rem;
 }
-.detail-card-lbl { font-size:.56rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:.6rem; }
+.detail-card-lbl { font-size:.56rem; letter-spacing:.4em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.6rem; }
 .detail-card-val { font-family:var(--serif); font-size:1.3rem; font-weight:300; color:var(--text); line-height:1.5; }
 .map-box {
   width:100%; height:300px; border-radius:8px;
@@ -381,7 +393,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 }
 .familia-card-lbl {
   font-size:.56rem; letter-spacing:.35em; text-transform:uppercase;
-  color:var(--gold); margin-bottom:1.1rem;
+  color:var(--text-muted); margin-bottom:1.1rem;
 }
 .familia-card-name {
   font-family:var(--serif); font-size:1.2rem; font-weight:300;
@@ -411,7 +423,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 }
 .tl-time {
   display:block; font-size:.56rem; letter-spacing:.38em;
-  text-transform:uppercase; color:var(--gold); margin-bottom:.3rem;
+  text-transform:uppercase; color:var(--text-muted); margin-bottom:.3rem;
 }
 .tl-title { font-family:var(--serif); font-size:1.35rem; font-weight:300; color:var(--text); margin-bottom:.3rem; }
 .tl-desc  { font-size:.8rem; color:var(--text-muted); line-height:1.65; }
@@ -440,7 +452,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 .paleta-item { display:flex; flex-direction:column; align-items:center; }
 .paleta-label {
   font-size:.62rem; letter-spacing:.35em; text-transform:uppercase;
-  color:var(--gold-dark); margin-bottom:.4rem; white-space:nowrap;
+  color:var(--text-muted); margin-bottom:.4rem; white-space:nowrap;
 }
 .paleta-item img {
   height:120px; width:auto; max-width:100%;
@@ -449,13 +461,14 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
   display:block; margin-bottom:.3rem;
 }
 .paleta-caption {
-  font-family:var(--serif); font-size:.85rem; font-style:italic;
+  font-family:var(--serif); font-size:1.05rem; font-style:italic;
   color:#c4827f; text-align:center; line-height:1.3;
   white-space:nowrap;
 }
 @media(max-width:600px){
   .paletas-wrap { flex-direction:column; align-items:center; }
   .paleta-item img { width:100%; max-width:360px; height:auto; }
+  .paleta-caption { white-space:normal; max-width:260px; font-size:.95rem; }
 }
 .dresscode-outfits {
   display:flex; flex-wrap:nowrap; justify-content:center; gap:2rem;
@@ -490,9 +503,9 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
 }
 .avoid-pill {
   display:inline-flex; align-items:center; gap:.5rem;
-  padding:.55rem 1.2rem;
+  padding:.65rem 1.4rem;
   background:#fef5f5; border:1px solid #f0d0cc;
-  border-radius:50px; font-size:.7rem; color:#c4827f; letter-spacing:.1em;
+  border-radius:50px; font-size:.85rem; color:#c4827f; letter-spacing:.08em;
 }
 .dress-restrictions-card {
   max-width:560px; margin:2.5rem auto 0;
@@ -544,10 +557,17 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
   content:''; position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(circle at 80% 20%,rgba(201,169,110,.08) 0%,transparent 40%);
 }
-.rsvp-deadline { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-dark); margin:-1rem 0 2.75rem; display:block; }
+.rsvp-deadline { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--text-muted); margin:-1rem 0 2.75rem; display:block; }
+.no-extra-badge {
+  display:inline-block; padding:.6rem 1.5rem;
+  border:1px solid var(--gold); border-radius:50px;
+  background:rgba(201,169,110,.08);
+  font-size:.72rem; letter-spacing:.08em;
+  color:var(--gold-dark); margin-bottom:2.5rem;
+}
 .rsvp-form { max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:1.1rem; position:relative; z-index:1; }
 .f-field { display:flex; flex-direction:column; gap:.4rem; text-align:left; }
-.f-label { font-size:.56rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold-dark); }
+.f-label { font-size:.56rem; letter-spacing:.4em; text-transform:uppercase; color:var(--text-muted); }
 .f-input,.f-select,.f-textarea {
   background:var(--white); border:1px solid var(--gold-light);
   border-radius:5px; padding:.85rem 1rem; color:var(--text);
@@ -588,7 +608,7 @@ body { font-family: var(--sans); background: var(--cream); color: var(--text); o
    ============================== */
 #contact { background:var(--cream); text-align:center; }
 .contact-grid { display:flex; gap:3.5rem; justify-content:center; flex-wrap:wrap; margin-top:2.75rem; }
-.contact-lbl { font-size:.56rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; }
+.contact-lbl { font-size:.56rem; letter-spacing:.42em; text-transform:uppercase; color:var(--text-muted); margin-bottom:.4rem; }
 .contact-name { font-family:var(--serif); font-size:1.25rem; color:var(--text); margin-bottom:.25rem; }
 .contact-info { font-size:.8rem; color:var(--text-muted); line-height:1.7; }
 
@@ -602,7 +622,7 @@ footer {
   font-size:clamp(2.8rem,7vw,4.5rem);
   color:var(--gold-dark); margin-bottom:.5rem;
 }
-.footer-date { font-size:.58rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold-dark); margin-bottom:1.5rem; }
+.footer-date { font-size:.58rem; letter-spacing:.45em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1.5rem; }
 .footer-orn { display:flex; align-items:center; justify-content:center; gap:1rem; }
 .footer-orn::before,.footer-orn::after { content:''; height:1px; width:50px; background:rgba(201,169,110,.35); }
 .footer-gem { color:var(--gold); }
@@ -1053,9 +1073,19 @@ body.env-open { overflow:hidden; }
       <circle cx="80" cy="11" r="2" fill="currentColor" stroke="none"/>
     </svg>
 
-    <div class="story-grid">
-      <div class="reveal">
-        <img class="story-monogram-img" src="nuestrahistoria.png" alt="F & V">
+    <div class="story-stack">
+      <div class="reveal story-names-card">
+        <div class="story-names-row">
+          <div class="story-name-col">
+            <p class="story-first-script">Fernando Josué</p>
+            <p class="story-last-name">Romero Torres</p>
+          </div>
+          <span class="story-heart">♥</span>
+          <div class="story-name-col">
+            <p class="story-first-script">Verónica</p>
+            <p class="story-last-name">Garza González</p>
+          </div>
+        </div>
       </div>
       <div class="reveal d2">
         <h3 class="story-sub">En este nuevo capítulo</h3>
@@ -1275,11 +1305,12 @@ body.env-open { overflow:hidden; }
     <span class="eyebrow reveal">Confirmación de Asistencia</span>
     <h2 class="section-title reveal">¿Nos <em>acompañas?</em></h2>
     <div class="divider-line"></div>
-    <span class="rsvp-deadline reveal">Confirma antes del 22 de Octubre de 2026</span>
 
-    <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--text-muted);max-width:460px;margin:-1.75rem auto 2.5rem;line-height:1.85">
-      Por tratarse de una celebración íntima, contamos con un número limitado de lugares. Tu boleto ya tiene un espacio reservado con mucho cariño — te pedimos confirmar tu asistencia antes del 22 de Octubre de 2026, ya que después de esta fecha tu lugar podría cederse a otro invitado.
+    <p class="reveal" style="font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--text-muted);max-width:460px;margin:-1.75rem auto 1.5rem;line-height:1.85">
+      Te pedimos confirmar tu asistencia antes del 22 de Octubre de 2026, ya que después de esta fecha tu lugar podría cederse a otro invitado.
     </p>
+
+    <div class="no-extra-badge reveal">✦ Debido al cupo limitado, no será posible recibir acompañantes adicionales ✦</div>
 
     <div class="rsvp-form reveal" style="position:relative;z-index:1">
 
@@ -1303,7 +1334,7 @@ body.env-open { overflow:hidden; }
         Enviar por WhatsApp a la Wedding Planner
       </button>
 
-      <p style="font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-top:.25rem">
+      <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--text-muted);line-height:1.7;margin-top:.25rem">
         Tu boleto físico te será entregado una vez confirmada tu asistencia.
       </p>
 
