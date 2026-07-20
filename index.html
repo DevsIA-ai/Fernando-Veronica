@@ -1319,9 +1319,10 @@ body.env-open { overflow:hidden; }
     <div class="rsvp-form reveal" style="position:relative;z-index:1">
 
       <div class="f-field">
-        <label class="f-label">Confirmo mi asistencia</label>
+        <label class="f-label">¿Asistirás?</label>
         <div class="attend-row">
-          <div class="attend-opt sel" id="attendYesOpt" onclick="selectAttend(this,'yes'); sendWhatsApp();">✓ Sí, ahí estaré</div>
+          <div class="attend-opt" id="attendYesOpt" onclick="selectAttend(this,'yes'); sendWhatsApp();">✓ Sí, ahí estaré</div>
+          <div class="attend-opt" id="attendNoOpt" onclick="selectAttend(this,'no'); sendWhatsApp();">✗ Lo siento, no podré</div>
         </div>
       </div>
 
@@ -1536,7 +1537,8 @@ const guestMesa = rsvpParams.get('m') || rsvpParams.get('mesa') || '';
 
 function sendWhatsApp(){
   const msg = document.getElementById('rsvpMsg').value.trim();
-  let texto = `Hola, soy invitado de la boda de Fernando y Verónica \n\n¿Asistiré el 22 de Noviembre de 2026?\nSí asistiré`;
+  const asistencia = attendVal === 'no' ? 'Lo siento, no podré asistir' : 'Sí asistiré';
+  let texto = `Hola, soy invitado de la boda de Fernando y Verónica \n\n¿Asistiré el 22 de Noviembre de 2026?\n${asistencia}`;
   if(guestFamily) texto += `\n\nFamilia: ${guestFamily}\nBoletos asignados: ${guestBoletos}`;
   if(guestMesa) texto += `\nMesa: ${guestMesa}`;
   if(msg) texto += `\n\nMensaje: ${msg}`;
